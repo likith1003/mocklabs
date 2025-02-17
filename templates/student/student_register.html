@@ -1,0 +1,21 @@
+{% extends "student/base.html" %}
+
+
+
+{% block title %}
+student_register
+{% endblock title %}
+
+
+{% block content %}
+  <h1>student_register</h1>
+
+  <center>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ESUFO.as_p}}
+        {{ESPFO.as_p}}
+        <input type="submit" value="Register">
+    </form>
+  </center>
+{% endblock content %}
