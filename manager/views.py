@@ -4,6 +4,7 @@ from django.http import HttpResponse, HttpResponseRedirect
 import random
 import string
 from django.urls import reverse
+from django.contrib.auth import authenticate, login, logout
 
 # Create your views here.
 
@@ -34,3 +35,22 @@ def add_employee(request):
             return HttpResponseRedirect(reverse('manager_home'))
         return HttpResponse('Invalid Data')
     return render(request, 'manager/add_employee.html', d)
+
+
+def manager_login(request):
+    if request.method == 'POST':
+        un = request.POST.get('un')
+        pw = request.POST.get('pw')
+        AUO = authenticate(username=un, password=pw)
+        if AUO and AUO.is_staff and AUO.is_active:
+            if AUO.is_superuser:
+                login(request, AUO)
+                request.session['adminuser']=un
+                return HttpResponseRedirect(reverse('manager_home'))
+            return HttpResponse('not a admin')
+        return HttpResponse('byeeeee')
+    return render(request, 'manager/manager_login.html')
+
+def manager_logout(request):
+    logout(request)
+    return HttpResponseRedirect(reverse('manager_home'))

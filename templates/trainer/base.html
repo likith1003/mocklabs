@@ -12,33 +12,33 @@
 <body>
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
         <div class="container-fluid">
-          <a class="navbar-brand" href="{% url 'manager_home' %}">MockLabs</a>
+          <a class="navbar-brand" href="{% url 'trainer_home' %}">MockLabs</a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
           <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
               <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="{% url 'manager_home' %}">Home</a>
+                <a class="nav-link active" aria-current="page" href="{% url 'trainer_home' %}">Home</a>
               </li>
               {% if user.is_authenticated %}
                 
               <li class="nav-item">
-                <a class="nav-link" href="{% url 'manager_logout' %}">Logout</a>
+                <a class="nav-link" href="{% url 'trainer_logout' %}">Logout</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="#">Something else</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="{% url 'add_employee' %}">Add Employee</a>
+                <a class="nav-link" href="#">Update Resume</a>
               </li>
 
               {% else %}
               <li class="nav-item">
-                <a class="nav-link" href="">Register</a>
+                <a class="nav-link" href="{% url 'student_register' %}">Register</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="{% url 'manager_login' %}">Login</a>
+                <a class="nav-link" href="{% url 'trainer_login' %}">Login</a>
               </li>
               {% endif %}
 
