@@ -15,6 +15,14 @@ def login_required(func):
     return inner
 
 def student_home(request):
+    un = request.session.get('username')
+    UO = User.objects.get(username=un)
+    if UO:
+        PO = StudentProfile.objects.get(username=UO)
+        d = {'UO': UO, 'PO': PO}
+
+        return render(request, 'student/student_home.html', d)
+
     return render(request, 'student/student_home.html')
 
 
