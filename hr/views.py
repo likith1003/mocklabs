@@ -43,6 +43,7 @@ def schedule_mock(request):
         SFDO = SchedulingForm(request.POST, request.FILES)
         if SFDO.is_valid():
             SFDO.save()
+            print(SFDO.cleaned_data.get('students').url)
             with open(r"C:\Users\lenovo\Desktop\Book1.csv", 'r') as f:
                 data = csv.reader(f)
                 next(data)
